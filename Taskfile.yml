@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  installdeps:
+    desc: Install required tools
+    cmds:
+      - go install github.com/swaggo/swag/cmd/swag@latest
+      - go install github.com/cosmtrek/air@latest
+  dev:
+    desc: Run the application in development mode
+    deps:
+      - scripts:change_to_dev
+      - installdeps
+    cmds:
+      - swag init
+      - air -- --log-level debug
+  scripts:change_to_dev:
+    desc: Change the environment to development
+    cmds:
+      - go run -tags script ./.scripts/change_to_dev.go
+  scripts:change_to_prod:
+    desc: Change the environment to production
+    cmds:
+      - go run -tags script ./.scripts/change_to_prod.go
