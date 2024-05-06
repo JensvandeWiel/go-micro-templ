@@ -30,4 +30,5 @@ func main() {
 	}
 
 	err = os.WriteFile("config.yaml", file, 0644)
+	println("Changed config environment to development")
 }
