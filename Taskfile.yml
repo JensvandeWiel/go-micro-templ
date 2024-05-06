@@ -10,10 +10,9 @@ tasks:
     desc: Run the application in development mode
     deps:
       - scripts:change_to_dev
-      - scripts:delete_docs_dir
+      - generate_swagger
       - installdeps
     cmds:
-      - swag init
       - air -c .air.toml -- --log-level debug
   build:
     desc: Build the application
@@ -31,3 +30,9 @@ tasks:
     desc: Delete the docs directory
     cmds:
       - go run -tags script ./.scripts/delete_docs_dir.go
+  generate_swagger:
+    desc: Generate swagger documentation
+    deps:
+      - scripts:delete_docs_dir
+    cmds:
+      - swag init
