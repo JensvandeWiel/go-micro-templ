@@ -33,6 +33,7 @@ tasks:
   generate_swagger:
     desc: Generate swagger documentation
     deps:
+      - installdeps
       - scripts:delete_docs_dir
     cmds:
       - swag init
