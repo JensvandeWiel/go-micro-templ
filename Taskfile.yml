@@ -10,6 +10,7 @@ tasks:
     desc: Run the application in development mode
     deps:
       - scripts:change_to_dev
+      - scripts:delete_docs_dir
       - installdeps
     cmds:
       - swag init
@@ -26,3 +27,7 @@ tasks:
     desc: Change the environment to production
     cmds:
       - go run -tags script ./.scripts/change_to_prod.go
+  scripts:delete_docs_dir:
+    desc: Delete the docs directory
+    cmds:
+      - go run -tags script ./.scripts/delete_docs_dir.go
