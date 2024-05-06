@@ -13,7 +13,7 @@ tasks:
       - installdeps
     cmds:
       - swag init
-      - air -- --log-level debug
+      - air -c .air.toml -- --log-level debug
   build:
     desc: Build the application
     cmds:

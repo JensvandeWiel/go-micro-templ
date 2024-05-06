@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/JensvandeWiel/go-micro-templ/docs"
 	_ "github.com/JensvandeWiel/go-micro-templ/docs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -22,9 +23,6 @@ import (
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @host localhost:1323
-// @BasePath /v1
 func main() {
 	logLevel := flag.String("log-level", "info", "Log level")
 	configPath := flag.String("config", "config.yaml", "Path to the config file")
@@ -37,6 +35,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	docs.SwaggerInfo.Host = config.Host + ":" + config.Port
 
 	if config.Environment == "development" {
 		slog.Debug("Running in development mode", slog.String("config", fmt.Sprintf("%+v", config)))
