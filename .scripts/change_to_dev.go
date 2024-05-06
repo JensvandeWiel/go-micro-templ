@@ -8,6 +8,12 @@ import (
 )
 
 func main() {
+	_, err := os.Stat("config.yaml")
+	if err != nil && os.IsNotExist(err) {
+		println("Config file not found, skipping...")
+		return
+	}
+
 	file, err := os.ReadFile("config.yaml")
 	if err != nil {
 		panic(err)
