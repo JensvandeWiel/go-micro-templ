@@ -105,3 +105,6 @@ tmp
 
 # swag-go
 docs
+
+# config
+config.yaml
