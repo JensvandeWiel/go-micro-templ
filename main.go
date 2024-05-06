@@ -43,11 +43,14 @@ func main() {
 	}
 
 	e := echo.New()
+	e.HideBanner = true
+	e.HidePort = true
+
 	e.Use(slogecho.New(slog.Default()))
 	e.Use(middleware.Recover())
 
-	e.HideBanner = true
-	e.HidePort = true
+	v1 := e.Group("/v1")
+	createV1Routes(v1)
 
 	if config.Environment != "production" {
 		slog.Debug("Environment is not production, enabling swagger endpoint")
