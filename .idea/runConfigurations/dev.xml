@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="dev" type="TaskRunConfiguration" factoryName="TaskRunConfiguration">
+    <taskfile taskPath="C:\Users\jensvandewiel\scoop\apps\task\3.36.0\task.exe" filename="C:\Users\jensvandewiel\MyProjects\go-micro-templ\Taskfile.yml" task="dev" workingDirectory="" arguments="" pty="false">
+      <envs />
+      <vars />
+    </taskfile>
+    <method v="2">
+      <option name="LaunchBrowser.Before.Run" url="http://localhost:8080/swagger/index.html" />
+    </method>
+  </configuration>
+</component>
