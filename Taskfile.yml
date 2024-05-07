@@ -14,6 +14,10 @@ tasks:
       - installdeps
     cmds:
       - air -c .air.toml -- --log-level debug
+  test:
+    desc: Run the tests
+    cmds:
+      - go test -count=1 -v ./...
   build:
     desc: Build the application
     cmds:
