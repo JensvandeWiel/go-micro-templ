@@ -6,5 +6,6 @@ import (
 )
 
 func createV1Routes(v1 *echo.Group) {
-	v1.GET("/hello", handlers.HelloWorldHandle)
+	indexHandler := handlers.NewIndexHandler()
+	v1.GET("/hello", indexHandler.HelloWorldHandle)
 }

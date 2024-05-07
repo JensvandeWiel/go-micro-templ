@@ -41,12 +41,7 @@ func main() {
 		slog.Debug("Running in development mode", slog.String("config", fmt.Sprintf("%+v", config)))
 	}
 
-	e := echo.New()
-	e.HideBanner = true
-	e.HidePort = true
-
-	e.Use(slogecho.New(slog.Default()))
-	e.Use(middleware.Recover())
+	e := newEcho()
 
 	v1 := e.Group("/v1")
 	createV1Routes(v1)
@@ -57,4 +52,15 @@ func main() {
 	}
 	slog.Info("Starting server", slog.String("port", config.Port), slog.String("host", config.Host))
 	e.Logger.Fatal(e.Start(config.Host + ":" + config.Port))
+}
+
+func newEcho() *echo.Echo {
+	e := echo.New()
+	e.HideBanner = true
+	e.HidePort = true
+
+	e.Use(slogecho.New(slog.Default()))
+	e.Use(middleware.Recover())
+
+	return e
 }
